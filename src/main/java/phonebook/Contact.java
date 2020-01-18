@@ -35,4 +35,9 @@ public class Contact {
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
+
+    public String toString(){
+        return name + "; " + phone + "; " + birthday + ";";
+    }
 }
+
