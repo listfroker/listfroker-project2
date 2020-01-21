@@ -4,7 +4,6 @@ public class Contact {
     private String name;
     private String phone;
     private String birthday;
-    int findId;
 
     public Contact(String name, String phone, String birthday) {
         this.name = name;

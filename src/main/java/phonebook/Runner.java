@@ -23,7 +23,7 @@ public class Runner {
                     final String name = scanner.next();
                     System.out.println("Введите номер: ");
                     final String phone = scanner.next();
-                    System.out.println("Введите возраст: ");
+                    System.out.println("Введите дату рождения: ");
                     final String birthday = scanner.next();
                     Contact contact = new Contact(name, phone, birthday);
                     phoneBook.add(contact);
@@ -41,39 +41,54 @@ public class Runner {
                     phoneBook.del(id);
 
                 } else if (input == ActionType.FIND.getIndex()) {
+                    while (true) {
+                        System.out.println("You can find by name or by phone( 1 - by name, 2- by phone)");
 
-                    System.out.println("You can find by name or by phone( 1 - by name, 2- by phone)");
-
-                    int findId = scanner.nextInt();
+                        int findId = scanner.nextInt();
 
 
-                    if (findId == 1) {
-                        System.out.println("Find by name:");
-                        String name = scanner.next();
-                        ArrayList<Contact> filteredContacts = phoneBook.findByNameStart(name);
-                        ConsoleDisplay.printContacts(filteredContacts);
-                    } else if (findId == 2) {
-                        System.out.println("Find by last 4 numbers of phone: ");
-                        String phone = scanner.next();
-                        ArrayList<Contact> filteredContacts = phoneBook.findByPhone(phone);
-                        ConsoleDisplay.printContacts(filteredContacts);
-                    } else {
-                        System.out.println("NO, please enter number! ");
-                        scanner.nextInt();
+                        if (findId == 2) {
+                            System.out.println("Find by first letters of name:");
+                            String name = scanner.next();
+                            ArrayList<Contact> filteredContacts = phoneBook.findByNameStart(name);
+                            ConsoleDisplay.printContacts(filteredContacts);
+                        } else if (findId == 3) {
+                            System.out.println("Find by last 4 numbers of phone: ");
+                            String phone = scanner.next();
+                            ArrayList<Contact> filteredContacts = phoneBook.findByPhone(phone);
+                            ConsoleDisplay.printContacts(filteredContacts);
+                        } else if (findId == 1) {
+                            System.out.println("Find by full name:");
+                            String fullName = scanner.next();
+                            ArrayList<Contact> filteredContacts = phoneBook.findByName(fullName);
+                            ConsoleDisplay.printContacts(filteredContacts);
+                        }
                     }
+                } else if (input == ActionType.SAVE.getIndex()) {
+                    FileController.saveToFile(phoneBook.getAllContacts());
+                    ;
+                    System.out.println("Contact's has been saved");
+                } else if (input == ActionType.UPDATE.getIndex()) {
+                    System.out.println("Enter id: ");
+                    int id = scanner.nextInt();
+                        Contact contact = phoneBook.find(id);
+                        ConsoleDisplay.printContact(contact);
+                    System.out.println("What you want to update?(1 - name, 2 - phone, 3 - birthday, 0 - exit)");
+                    int updateId = scanner.nextInt();
+                        if (updateId == 0) {
+                            break;
+                        } else if (updateId == 1) {
+                            contact.setName(String name) = scanner.next();
+                            ConsoleDisplay.printContact(contact);
+                        }
                 }
-                else if(input == ActionType.SAVE.getIndex()){
-                        FileController.saveToFile(phoneBook.getAllContacts());;
-                        System.out.println("Contact's has been saved");
-                    }
-                }
-                else {
-                    System.out.println("Choose one of the find variants: ");
-                }
+            } else {
+                System.out.println("Please, enter number! ");
+                scanner.next();
             }
         }
     }
-
+}
 
 
 

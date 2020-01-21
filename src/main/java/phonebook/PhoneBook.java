@@ -24,9 +24,6 @@ public class PhoneBook {
             if(contact.getName().equals(name)){
                 result.add(contact);
             }
-
-
-
         }
         return result;
     }

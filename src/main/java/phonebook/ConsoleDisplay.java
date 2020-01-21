@@ -22,6 +22,7 @@ public class ConsoleDisplay {
                 System.out.println(i++);
                 System.out.println(contact.getName());
                 System.out.println(contact.getPhone());
+                System.out.println(contact.getBirthday());
                 System.out.println("-------------------------");
             }
         }
