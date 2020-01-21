@@ -83,7 +83,7 @@ public class Runner {
                         }
                 }
             } else {
-                System.out.println("Please, enter number! ");
+                System.out.println("Please, enter number!! ");
                 scanner.next();
             }
         }
