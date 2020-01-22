@@ -73,13 +73,22 @@ public class Runner {
                     int id = scanner.nextInt();
                         Contact contact = phoneBook.find(id);
                         ConsoleDisplay.printContact(contact);
-                    System.out.println("What you want to update?(1 - name, 2 - phone, 3 - birthday, 0 - exit)");
-                    int updateId = scanner.nextInt();
-                        if (updateId == 0) {
-                            break;
-                        } else if (updateId == 1) {
-                            contact.setName(String name) = scanner.next();
-                            ConsoleDisplay.printContact(contact);
+                        while(true) {
+                            System.out.println("What you want to update?(1 - name, 2 - phone, 3 - birthday, 0 - exit)");
+                            int updateId = scanner.nextInt();
+
+                            if (updateId == 0) {
+                                break;
+                            } else if (updateId == 1) {
+                                contact.setName(scanner.next());
+                                ConsoleDisplay.printContact(contact);
+                            } else if (updateId == 2) {
+                                contact.setPhone(scanner.next());
+                                ConsoleDisplay.printContact(contact);
+                            } else if (updateId == 3) {
+                                contact.setBirthday(scanner.next());
+                                ConsoleDisplay.printContact(contact);
+                            }
                         }
                 }
             } else {

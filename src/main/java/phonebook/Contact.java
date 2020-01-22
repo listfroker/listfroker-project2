@@ -38,5 +38,7 @@ public class Contact {
     public String toString(){
         return name + "; " + phone + "; " + birthday + ";";
     }
+
+
 }
 
